@@ -1,6 +1,6 @@
 package com.example.imdmarket
 
-import com.google.gson.Gson
+import com.example.imdmarket.sharedPreferencesUtils.Utils
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
@@ -9,39 +9,33 @@ import com.example.imdmarket.databinding.ActivityCadastrarBinding
 
 class CadastrarActivity: AppCompatActivity() {
     private lateinit var binding: ActivityCadastrarBinding
-    var productPrefs: SharedPreferences = getSharedPreferences("productsPref", MODE_PRIVATE)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCadastrarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var saveBtn = binding.saveButton
+        val saveBtn = binding.saveButton
 
-                saveBtn.setOnClickListener {
-                    val productName = binding.productNameInput.text.toString()
-                    val productCode = binding.productCodeInput.text.toString().toIntOrNull() ?: 0
-                    val productStock = binding.stockQuantityInput.text.toString().toIntOrNull() ?: 0
-                    val productDescription = binding.productDescInput.text.toString()
+        saveBtn.setOnClickListener {
+            val productName = binding.productNameInput.text.toString()
+            val productCode = binding.productCodeInput.text.toString().toIntOrNull() ?: 0
+            val productStock = binding.stockQuantityInput.text.toString().toIntOrNull() ?: 0
+            val productDescription = binding.productDescInput.text.toString()
 
-                    val product = Product(
-                        name = productName,
-                        id = productCode,
-                        description = productDescription,
-                        stock = productStock
-                    )
+            val product = Product(productName, productCode, productDescription,productStock)
 
-                    val gson = Gson()
-                    val productJson = gson.toJson(product)
+            // Retrieve the current list of products
+            val currentProducts: MutableList<Product> = Utils.getProducts(this)
 
-                    // Save the JSON string to SharedPreferences
-                    val sharedPreferences: SharedPreferences = getSharedPreferences("ProductPrefs", MODE_PRIVATE)
-                    val editor = sharedPreferences.edit()
-                    editor.putString("product", productJson)
-                    editor.apply()
+            // Add the new product to the list
+            currentProducts.add(product)
 
-                    // Show a confirmation message
-                    Toast.makeText(this, "Product saved successfully!", Toast.LENGTH_SHORT).show()
-                }
+            // Save the updated list back to SharedPreferences
+            Utils.saveProductsArrayList(this, currentProducts)
 
+            // Show a confirmation message
+            Toast.makeText(this, "Product saved successfully!", Toast.LENGTH_SHORT).show()
+        }
     }
 }
