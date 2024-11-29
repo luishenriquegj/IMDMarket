@@ -11,6 +11,5 @@ class AlterarActivity : AppCompatActivity(){
         binding = ActivityAlterarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
     }
 }

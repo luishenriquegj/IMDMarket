@@ -4,38 +4,42 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.imdmarket.Product
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class Utils {
 
     companion object {
-
-
-
-        fun saveProductsArrayList(context: Context, list: MutableList<Product>) {
-            val sharedPreferences: SharedPreferences = context.getSharedPreferences("productsPref", Context.MODE_PRIVATE)
+        fun escapeJsonString(input: String): String {
+            val stringBuilder = StringBuilder()
+            for (char in input) {
+                when (char) {
+                    '\\' -> stringBuilder.append("\\\\")
+                    '"' -> stringBuilder.append("\\\"")
+                    '\b' -> stringBuilder.append("\\b")
+                    '\n' -> stringBuilder.append("\\n")
+                    '\r' -> stringBuilder.append("\\r")
+                    '\t' -> stringBuilder.append("\\t")
+                    else -> stringBuilder.append(char)
+                }
+            }
+            return stringBuilder.toString()
+        }
+        fun saveProductsArrayList(context: Context, products: ArrayList<String>) {
+            val sharedPreferences: SharedPreferences = context.getSharedPreferences("products", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             val gson = Gson()
-
-            val json = gson.toJson(list)
+            val json = gson.toJson(products)
             editor.putString("products", json)
             editor.apply()
         }
 
-        fun getProducts(context: Context): MutableList<Product> {
-            val sharedPreferences: SharedPreferences = context.getSharedPreferences("productsPref", Context.MODE_PRIVATE)
-            val productSet: Set<String> = sharedPreferences.getStringSet("products", setOf()) ?: setOf()
-
+        fun getProducts(context: Context): ArrayList<String> {
+            val sharedPreferences = context.getSharedPreferences("products", Context.MODE_PRIVATE)
             val gson = Gson()
-            val products = ArrayList<Product>()
-
-            for (productJson in productSet) {
-                val product = gson.fromJson(productJson, Product::class.java)
-                products.add(product)
-            }
-
-            return products
+            val json = sharedPreferences.getString("products", null)
+            val type = object : TypeToken<ArrayList<String>>() {}.type
+            return gson.fromJson(json, type) ?: ArrayList()
         }
-
     }
 }
 
