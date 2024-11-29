@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +10,7 @@
         android:layout_height="113dp"
         android:background="#2196F3"
         android:paddingVertical="20sp"
-        android:text="IMD Market"
+        android:text="@string/imd_market"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="48sp"
@@ -26,7 +25,7 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DELETE PRODUCT"
+        android:text="@string/delete_product"
         android:textAllCaps="true"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -40,7 +39,7 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="product code"
+        android:text="@string/product_code"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.176"
@@ -49,11 +48,12 @@
         app:layout_constraintVertical_bias="0.359" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/productIdInput"
         android:layout_width="295dp"
         android:layout_height="45dp"
+        android:autofillHints="@string/_1234567"
         android:ems="10"
-        android:hint="1234567"
+        android:hint="@string/_1234567"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,10 +62,10 @@
         app:layout_constraintVertical_bias="0.447" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/deleteBtn"
         android:layout_width="138dp"
         android:layout_height="50dp"
-        android:text="delete"
+        android:text="@string/delete"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textStyle="bold"
@@ -77,10 +77,10 @@
         app:layout_constraintVertical_bias="0.729" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/cancelBtn"
         android:layout_width="138dp"
         android:layout_height="50dp"
-        android:text="cancel"
+        android:text="@string/cancel"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textStyle="bold"

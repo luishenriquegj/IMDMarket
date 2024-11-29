@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 
-class ProductAdapter(private val productList: ArrayList<String>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(private var productList: ArrayList<Product>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName: TextView = itemView.findViewById(R.id.productName)
@@ -24,10 +23,8 @@ class ProductAdapter(private val productList: ArrayList<String>) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val productJson: String = productList[position]
-        val gson = Gson()
+        val product: Product = productList[position]
         try {
-            val product: Product = gson.fromJson(productJson, Product::class.java)
             holder.productName.text = product.name
             holder.productCode.text = product.id.toString()
             holder.productStock.text = product.stock.toString()
@@ -35,10 +32,12 @@ class ProductAdapter(private val productList: ArrayList<String>) : RecyclerView.
         } catch (e: JsonSyntaxException) {
             Log.e("ProductAdapter", "Failed to parse product JSON", e)
         }
-
     }
 
     override fun getItemCount(): Int {
         return productList.size
     }
+
+
+
 }

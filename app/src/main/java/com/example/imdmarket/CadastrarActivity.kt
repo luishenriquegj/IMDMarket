@@ -26,14 +26,14 @@ class CadastrarActivity: AppCompatActivity() {
 
             val product = Product(productName, productCode, productDescription,productStock)
 
-            val currentProducts: ArrayList<String> = Utils.getProducts(this)
+            val currentProducts: ArrayList<Product> = Utils.getProducts(this)
 
-            currentProducts.add(product.toString())
+            currentProducts.add(product)
 
             Utils.saveProductsArrayList(this, currentProducts)
 
             Toast.makeText(this, "Product saved successfully!", Toast.LENGTH_SHORT).show()
-
+            println(Utils.getProducts(this))
         }
     }
 }

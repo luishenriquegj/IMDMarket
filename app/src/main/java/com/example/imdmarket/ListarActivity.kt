@@ -12,11 +12,21 @@ class ListarActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityListarBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val currentProducts: ArrayList<String> = Utils.getProducts(this)
+        val currentProducts: ArrayList<Product> = Utils.getProducts(this)
 
         val recyclerView = binding.productRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = ProductAdapter(currentProducts)
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding = ActivityListarBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val currentProducts: ArrayList<Product> = Utils.getProducts(this)
+
+        val recyclerView = binding.productRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = ProductAdapter(currentProducts)
+    }
 }

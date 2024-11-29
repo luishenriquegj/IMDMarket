@@ -5,4 +5,6 @@ class Product(
     var id: Number,
     var description: String,
     var stock: Number
-)
+) {
+
+}

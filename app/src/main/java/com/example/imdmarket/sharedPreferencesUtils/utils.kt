@@ -24,8 +24,9 @@ class Utils {
             }
             return stringBuilder.toString()
         }
-        fun saveProductsArrayList(context: Context, products: ArrayList<String>) {
-            val sharedPreferences: SharedPreferences = context.getSharedPreferences("products", Context.MODE_PRIVATE)
+
+        fun saveProductsArrayList(context: Context, products: ArrayList<Product>) {
+            val sharedPreferences: SharedPreferences = context.getSharedPreferences("productsPref", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             val gson = Gson()
             val json = gson.toJson(products)
@@ -33,13 +34,37 @@ class Utils {
             editor.apply()
         }
 
-        fun getProducts(context: Context): ArrayList<String> {
-            val sharedPreferences = context.getSharedPreferences("products", Context.MODE_PRIVATE)
+        fun getProducts(context: Context): ArrayList<Product> {
+            val sharedPreferences = context.getSharedPreferences("productsPref", Context.MODE_PRIVATE)
             val gson = Gson()
             val json = sharedPreferences.getString("products", null)
-            val type = object : TypeToken<ArrayList<String>>() {}.type
+            val type = object : TypeToken<ArrayList<Product>>() {}.type
             return gson.fromJson(json, type) ?: ArrayList()
         }
+
+        fun deleteProductById(context: Context, productId: Number): Boolean {
+            val sharedPreferences = context.getSharedPreferences("productsPref", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            val gson = Gson()
+            val json = sharedPreferences.getString("products", null)
+            val productType = object : TypeToken<ArrayList<Product>>() {}.type
+            val currentProducts: ArrayList<Product> = gson.fromJson(json, productType)
+
+            val iterator = currentProducts.iterator()
+            while (iterator.hasNext()) {
+                val product = iterator.next()
+                if (product.id.toInt() == productId) {
+                    iterator.remove()
+                    val jsonProducts = gson.toJson(currentProducts)
+                    editor.putString("products", jsonProducts)
+                    editor.apply()
+                    return true
+                }
+            }
+            return false
+        }
+
+
     }
 }
 
