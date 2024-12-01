@@ -1,5 +1,6 @@
 package com.example.imdmarket
 
+import android.content.Intent
 import com.example.imdmarket.sharedPreferencesUtils.Utils
 import android.os.Bundle
 import android.widget.Toast
@@ -16,11 +17,17 @@ class CadastrarActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         val saveBtn = binding.saveButton
+        val clearBtn = binding.clearButton
+
+        val productNameInput = binding.productNameInput
+        val productCodeInput = binding.productCodeInput
+        val productStockInput = binding.stockInput
+        val productDescriptionInput = binding.productDescInput
 
         saveBtn.setOnClickListener {
             val productName = binding.productNameInput.text.toString()
             val productCode = binding.productCodeInput.text.toString().toIntOrNull() ?: 0
-            val productStock = binding.stockQuantityInput.text.toString().toIntOrNull() ?: 0
+            val productStock = binding.stockInput.text.toString().toIntOrNull() ?: 0
             val productDescription = escapeJsonString(binding.productDescInput.text.toString())
 
 
@@ -33,7 +40,18 @@ class CadastrarActivity: AppCompatActivity() {
             Utils.saveProductsArrayList(this, currentProducts)
 
             Toast.makeText(this, "Product saved successfully!", Toast.LENGTH_SHORT).show()
-            println(Utils.getProducts(this))
+            startActivity(Intent(this, MenuActivity::class.java))
+            finish()
+
+        }
+
+        clearBtn.setOnClickListener {
+            productNameInput.text.clear()
+            productStockInput.text.clear()
+            productDescriptionInput.text.clear()
+            productCodeInput.text.clear()
+            startActivity(Intent(this, MenuActivity::class.java))
+            finish()
         }
     }
 }

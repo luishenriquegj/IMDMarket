@@ -29,6 +29,8 @@ class DeletarActivity : AppCompatActivity(){
                 return@setOnClickListener
             }else{
                 Toast.makeText(this, "Product deleted with success", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MenuActivity::class.java))
+                finish()
                 return@setOnClickListener
             }
 

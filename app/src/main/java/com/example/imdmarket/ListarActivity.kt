@@ -1,5 +1,6 @@
 package com.example.imdmarket
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,9 +25,15 @@ class ListarActivity : AppCompatActivity(){
         binding = ActivityListarBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val currentProducts: ArrayList<Product> = Utils.getProducts(this)
-
+        val returnBtn = binding.button
         val recyclerView = binding.productRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = ProductAdapter(currentProducts)
+
+
+        returnBtn.setOnClickListener {
+            startActivity(Intent(this, MenuActivity::class.java))
+            finish()
+        }
     }
 }

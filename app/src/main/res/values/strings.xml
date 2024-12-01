@@ -6,4 +6,10 @@
     <string name="_1234567">1234567</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
+    <string name="product_description">Product description</string>
+    <string name="stock_quantity">stock quantity</string>
+    <string name="product_name">Product name</string>
+    <string name="save">save</string>
+    <string name="clear">clear</string>
+    <string name="product_name_example">product name example</string>
 </resources>

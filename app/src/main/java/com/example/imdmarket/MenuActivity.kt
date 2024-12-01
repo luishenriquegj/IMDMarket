@@ -21,18 +21,22 @@ class MenuActivity : AppCompatActivity() {
 
         addProdBtn.setOnClickListener {
             startActivity(Intent(this, CadastrarActivity::class.java))
+            finish()
         }
 
         listBtn.setOnClickListener {
             startActivity(Intent(this, ListarActivity::class.java))
+            finish()
         }
 
         removeProductBtn.setOnClickListener {
             startActivity(Intent(this, DeletarActivity::class.java))
+            finish()
         }
 
         updateProductBtn.setOnClickListener {
             startActivity(Intent(this, AlterarActivity::class.java))
+            finish()
         }
     }
 }
