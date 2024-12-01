@@ -7,15 +7,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="734dp"
+        android:layout_height="match_parent"
+        android:baselineAligned="true"
+        android:gravity="center"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appTitle">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="378dp"
+            android:layout_height="600sp"
             android:layout_margin="16dp"
             android:scrollIndicators="right"
             android:scrollbarAlwaysDrawHorizontalTrack="false"
@@ -23,6 +26,12 @@
             tools:itemCount="50">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:text="return to menu" />
     </LinearLayout>
 
     <TextView

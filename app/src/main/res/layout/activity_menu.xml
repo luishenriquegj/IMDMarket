@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="471dp"
+        android:layout_width="match_parent"
         android:layout_height="113dp"
         android:background="#2196F3"
         android:paddingVertical="20sp"
@@ -38,8 +39,8 @@
 
     <Button
         android:id="@+id/updateProductBtn"
-        android:layout_width="170dp"
-        android:layout_height="67dp"
+        android:layout_width="150sp"
+        android:layout_height="70dp"
         android:text="update product"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +51,7 @@
 
     <Button
         android:id="@+id/addProductBtn"
-        android:layout_width="170dp"
+        android:layout_width="150sp"
         android:layout_height="67dp"
         android:text="register product"
         app:barrierAllowsGoneWidgets="false"
@@ -64,7 +65,7 @@
 
     <Button
         android:id="@+id/removeProductBtn"
-        android:layout_width="170dp"
+        android:layout_width="150sp"
         android:layout_height="67dp"
         android:text="remove product"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,7 +76,7 @@
 
     <Button
         android:id="@+id/listProductBtn"
-        android:layout_width="170dp"
+        android:layout_width="150sp"
         android:layout_height="67dp"
         android:text="list product"
         app:layout_constraintBottom_toBottomOf="parent"
