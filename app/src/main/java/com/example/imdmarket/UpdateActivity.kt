@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarket.databinding.ActivityAlterarBinding
 
-class AlterarActivity : AppCompatActivity(){
+class UpdateActivity : AppCompatActivity(){
     private lateinit var binding: ActivityAlterarBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

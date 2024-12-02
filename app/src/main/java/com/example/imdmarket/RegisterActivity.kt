@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarket.databinding.ActivityCadastrarBinding
 import com.example.imdmarket.sharedPreferencesUtils.Utils.Companion.escapeJsonString
 
-class CadastrarActivity: AppCompatActivity() {
+class RegisterActivity: AppCompatActivity() {
     private lateinit var binding: ActivityCadastrarBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarket.databinding.ActivityDeletarBinding
 import com.example.imdmarket.sharedPreferencesUtils.Utils.Companion.deleteProductById
 
-class DeletarActivity : AppCompatActivity(){
+class DeleteActivity : AppCompatActivity(){
     private lateinit var binding: ActivityDeletarBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,7 @@ class DeletarActivity : AppCompatActivity(){
         }
 
         cancelBtn.setOnClickListener {
-            startActivity(Intent(this@DeletarActivity, MenuActivity::class.java))
+            startActivity(Intent(this@DeleteActivity, MenuActivity::class.java))
             finish()
             return@setOnClickListener
         }

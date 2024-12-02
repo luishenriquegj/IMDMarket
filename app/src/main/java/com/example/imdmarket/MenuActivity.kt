@@ -20,22 +20,22 @@ class MenuActivity : AppCompatActivity() {
         val updateProductBtn = binding.updateProductBtn
 
         addProdBtn.setOnClickListener {
-            startActivity(Intent(this, CadastrarActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
             finish()
         }
 
         listBtn.setOnClickListener {
-            startActivity(Intent(this, ListarActivity::class.java))
+            startActivity(Intent(this, ListActivity::class.java))
             finish()
         }
 
         removeProductBtn.setOnClickListener {
-            startActivity(Intent(this, DeletarActivity::class.java))
+            startActivity(Intent(this, DeleteActivity::class.java))
             finish()
         }
 
         updateProductBtn.setOnClickListener {
-            startActivity(Intent(this, AlterarActivity::class.java))
+            startActivity(Intent(this, UpdateActivity::class.java))
             finish()
         }
     }

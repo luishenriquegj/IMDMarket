@@ -26,19 +26,19 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".AlterarActivity"
+            android:name=".UpdateActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".CadastrarActivity"
+            android:name=".RegisterActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".DeletarActivity"
+            android:name=".DeleteActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".ListarActivity"
+            android:name=".ListActivity"
             android:exported="true">
         </activity>
     </application>
