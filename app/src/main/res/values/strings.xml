@@ -12,4 +12,13 @@
     <string name="save">save</string>
     <string name="clear">clear</string>
     <string name="product_name_example">product name example</string>
+    <string name="register_product">register product</string>
+    <string name="product_description_example">product description example…</string>
+    <string name="_123456789">123456789</string>
+    <string name="login">Login</string>
+    <string name="example_something_com">example@something.com</string>
+    <string name="e_mail">e-mail</string>
+    <string name="forgot_my_password">forgot my password</string>
+    <string name="password_hint">****************</string>
+    <string name="password">Password</string>
 </resources>

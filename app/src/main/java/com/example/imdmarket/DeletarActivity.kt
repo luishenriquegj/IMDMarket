@@ -37,6 +37,7 @@ class DeletarActivity : AppCompatActivity(){
 
 
         }
+
         cancelBtn.setOnClickListener {
             startActivity(Intent(this@DeletarActivity, MenuActivity::class.java))
             finish()
