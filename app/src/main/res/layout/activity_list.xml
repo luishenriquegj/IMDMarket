@@ -31,7 +31,7 @@
             android:id="@+id/button"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
-            android:text="return to menu" />
+            android:text="@string/returnTxt" />
     </LinearLayout>
 
     <TextView

@@ -4,21 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.imdmarket.databinding.ActivityAlterarBinding
+import com.example.imdmarket.databinding.ActivityUpdateBinding
 
 class UpdateActivity : AppCompatActivity(){
-    private lateinit var binding: ActivityAlterarBinding
+    private lateinit var binding: ActivityUpdateBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAlterarBinding.inflate(layoutInflater)
+        binding = ActivityUpdateBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val productName = binding.productNameInput
         val productCode = binding.productCodeInput
         val productStock = binding.stockInput
         val productDescription = binding.productDescInput
-
         val saveBtn = binding.saveButton
         val clearBtn = binding.clearButton
+        val returnBtn = binding.returnBtn
+
 
         saveBtn.setOnClickListener {
             if(productCode.text.isEmpty()){
@@ -36,6 +37,10 @@ class UpdateActivity : AppCompatActivity(){
         }
 
         clearBtn.setOnClickListener {
+            startActivity(Intent(this, MenuActivity::class.java))
+            finish()
+        }
+        returnBtn.setOnClickListener {
             startActivity(Intent(this, MenuActivity::class.java))
             finish()
         }

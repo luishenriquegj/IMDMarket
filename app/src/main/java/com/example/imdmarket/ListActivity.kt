@@ -4,14 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.imdmarket.databinding.ActivityListarBinding
+import com.example.imdmarket.databinding.ActivityListBinding
 import com.example.imdmarket.sharedPreferencesUtils.Utils
 
 class ListActivity : AppCompatActivity(){
-    private lateinit var binding: ActivityListarBinding
+    private lateinit var binding: ActivityListBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityListarBinding.inflate(layoutInflater)
+        binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val currentProducts: ArrayList<Product> = Utils.getProducts(this)
 
@@ -22,7 +22,7 @@ class ListActivity : AppCompatActivity(){
 
     override fun onResume() {
         super.onResume()
-        binding = ActivityListarBinding.inflate(layoutInflater)
+        binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val currentProducts: ArrayList<Product> = Utils.getProducts(this)
         val returnBtn = binding.button

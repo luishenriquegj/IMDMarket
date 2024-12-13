@@ -5,19 +5,20 @@ import com.example.imdmarket.sharedPreferencesUtils.Utils
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.imdmarket.databinding.ActivityCadastrarBinding
+import com.example.imdmarket.databinding.ActivityRegisterBinding
 import com.example.imdmarket.sharedPreferencesUtils.Utils.Companion.escapeJsonString
 
 class RegisterActivity: AppCompatActivity() {
-    private lateinit var binding: ActivityCadastrarBinding
+    private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCadastrarBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val saveBtn = binding.saveButton
         val clearBtn = binding.clearButton
+        val returnBtn = binding.returnBtn
 
         val productNameInput = binding.productNameInput
         val productCodeInput = binding.productCodeInput
@@ -46,6 +47,14 @@ class RegisterActivity: AppCompatActivity() {
         }
 
         clearBtn.setOnClickListener {
+            productNameInput.text.clear()
+            productStockInput.text.clear()
+            productDescriptionInput.text.clear()
+            productCodeInput.text.clear()
+            Toast.makeText(this, "All field values where cleared", Toast.LENGTH_SHORT).show()
+        }
+
+        returnBtn.setOnClickListener {
             productNameInput.text.clear()
             productStockInput.text.clear()
             productDescriptionInput.text.clear()

@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foregroundGravity="center_vertical|center_horizontal"
-        tools:layout_editor_absoluteX="-174dp"
-        tools:layout_editor_absoluteY="-46dp">
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="74dp">
 
         <TextView
             android:id="@+id/textView12"
@@ -56,7 +56,19 @@
             app:layout_constraintHorizontal_bias="0.154"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.828" />
+            app:layout_constraintVertical_bias="0.76" />
+
+        <Button
+            android:id="@+id/returnBtn"
+            android:layout_width="114dp"
+            android:layout_height="47dp"
+            android:text="@string/returnTxt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.849" />
 
         <Button
             android:id="@+id/clearButton"
@@ -68,7 +80,7 @@
             app:layout_constraintHorizontal_bias="0.777"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.828" />
+            app:layout_constraintVertical_bias="0.76" />
 
         <EditText
             android:id="@+id/productNameInput"
