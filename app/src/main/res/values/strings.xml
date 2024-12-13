@@ -22,4 +22,6 @@
     <string name="password_hint">****************</string>
     <string name="password">Password</string>
     <string name="returnTxt">return</string>
+    <string name="update_product">update product</string>
+    <string name="this_is_an_example_of_a_description">this is an example of a description</string>
 </resources>

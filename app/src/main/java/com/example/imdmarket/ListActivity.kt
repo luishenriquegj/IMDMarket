@@ -13,7 +13,7 @@ class ListActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val currentProducts: ArrayList<Product> = Utils.getProducts(this)
+        val currentProducts: MutableList<Product> = Utils.getProducts(this)
 
         val recyclerView = binding.productRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
