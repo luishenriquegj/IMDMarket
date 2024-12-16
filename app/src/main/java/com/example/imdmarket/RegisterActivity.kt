@@ -30,41 +30,40 @@ class RegisterActivity : AppCompatActivity() {
             val productCode = binding.productCodeInput.text.toString().toIntOrNull()
             val productStock = binding.stockInput.text.toString().toIntOrNull()
             val productDescription = escapeJsonString(binding.productDescInput.text.toString().trim())
-            val currentProducts: ArrayList<Product> = Utils.getProducts(this)
 
             when {
                 productName.isEmpty() -> {
                     Toast.makeText(this, "Please add a valid product name", Toast.LENGTH_LONG).show()
                 }
-                productDescription.isEmpty() -> {
-                    Toast.makeText(this, "Please add a product description", Toast.LENGTH_LONG).show()
+                productCode == null || productCode <= 0 -> {
+                    Toast.makeText(this, "Please add a valid product code (a positive number)", Toast.LENGTH_LONG).show()
                 }
                 productStock == null || productStock <= 0 -> {
                     Toast.makeText(this, "Please add a valid stock quantity (greater than 0)", Toast.LENGTH_LONG).show()
                 }
-                productCode == null || productCode <= 0 -> {
-                    Toast.makeText(this, "Please add a valid product code (a positive number)", Toast.LENGTH_LONG).show()
+                productDescription.isEmpty() -> {
+                    Toast.makeText(this, "Please add a product description", Toast.LENGTH_LONG).show()
                 }
 
-
                 else -> {
-                    val existingProduct = currentProducts.find { it.id == productCode }
-                    println(existingProduct)
-                    if (existingProduct != null) {
+                    val currentProducts = Utils.getProducts(this)
+
+                    if (currentProducts.any { it.id == productCode }) {
                         Toast.makeText(this, "A product with this ID already exists. Please use a different ID.", Toast.LENGTH_LONG).show()
                         return@setOnClickListener
                     }
+
+                    // Add new product
                     val product = Product(
                         productName,
                         productCode,
                         productDescription,
                         productStock
                     )
-
-
                     currentProducts.add(product)
 
-                    Utils.saveProductsArrayList(this, currentProducts)
+                    // Save updated product list back to storage
+                    Utils.saveProductsArrayList(this, ArrayList(currentProducts)) // Convert back to ArrayList if necessary
 
                     Toast.makeText(this, "Product saved successfully!", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MenuActivity::class.java))
@@ -72,6 +71,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
+
 
         clearBtn.setOnClickListener {
             productNameInput.text.clear()

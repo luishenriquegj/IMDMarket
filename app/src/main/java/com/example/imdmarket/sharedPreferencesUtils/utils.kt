@@ -25,7 +25,7 @@ class Utils {
             return stringBuilder.toString()
         }
 
-        fun saveProductsArrayList(context: Context, products: ArrayList<Product>) {
+        fun saveProductsArrayList(context: Context, products: MutableList<Product>) {
             val sharedPreferences: SharedPreferences = context.getSharedPreferences("productsPref", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             val gson = Gson()
