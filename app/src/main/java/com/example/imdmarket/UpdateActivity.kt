@@ -13,10 +13,12 @@ class UpdateActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityUpdateBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val productName = binding.productNameInput
         val productCode = binding.productCodeInput
         val productStock = binding.stockInput
         val productDescription = binding.productDescInput
+
         val saveBtn = binding.saveButton
         val clearBtn = binding.clearButton
         val returnBtn = binding.returnBtn
@@ -41,7 +43,6 @@ class UpdateActivity : AppCompatActivity(){
             }
 
             if (existingProduct == null) {
-                Toast.makeText(this, "A product with this ID doesn't exist. Please use a different ID.", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
@@ -55,20 +56,21 @@ class UpdateActivity : AppCompatActivity(){
                 existingProduct.description = productDescription.text.toString()
             }
 
-            // Salvar a lista atualizada de volta no SharedPreferences
             Utils.saveProductsMutableList(this, currentProducts)
 
             Toast.makeText(this, "Product updated successfully", Toast.LENGTH_SHORT).show()
 
-            // Navegar de volta para a MenuActivity
             startActivity(Intent(this, MenuActivity::class.java))
             finish()
         }
 
         clearBtn.setOnClickListener {
-            startActivity(Intent(this, MenuActivity::class.java))
-            finish()
+            productName.text.clear()
+            productStock.text.clear()
+            productDescription.text.clear()
+            productCode.text.clear()
         }
+
         returnBtn.setOnClickListener {
             startActivity(Intent(this, MenuActivity::class.java))
             finish()

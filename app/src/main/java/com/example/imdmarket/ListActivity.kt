@@ -9,6 +9,7 @@ import com.example.imdmarket.sharedPreferencesUtils.Utils
 
 class ListActivity : AppCompatActivity(){
     private lateinit var binding: ActivityListBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListBinding.inflate(layoutInflater)
