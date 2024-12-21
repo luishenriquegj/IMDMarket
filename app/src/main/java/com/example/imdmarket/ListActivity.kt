@@ -24,7 +24,7 @@ class ListActivity : AppCompatActivity(){
         super.onResume()
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val currentProducts: ArrayList<Product> = Utils.getProducts(this)
+        val currentProducts: MutableList<Product> = Utils.getProducts(this)
         val returnBtn = binding.button
         val recyclerView = binding.productRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
