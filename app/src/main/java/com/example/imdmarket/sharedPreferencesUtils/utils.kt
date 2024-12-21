@@ -25,7 +25,7 @@ class Utils {
             return stringBuilder.toString()
         }
 
-        fun saveProductsArrayList(context: Context, products: MutableList<Product>) {
+        fun saveProductsMutableList(context: Context, products: MutableList<Product>) {
             val sharedPreferences: SharedPreferences = context.getSharedPreferences("productsPref", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             val gson = Gson()
@@ -34,12 +34,12 @@ class Utils {
             editor.apply()
         }
 
-        fun getProducts(context: Context): ArrayList<Product> {
+        fun getProducts(context: Context): MutableList<Product> {
             val sharedPreferences = context.getSharedPreferences("productsPref", Context.MODE_PRIVATE)
             val gson = Gson()
             val json = sharedPreferences.getString("products", null)
-            val type = object : TypeToken<ArrayList<Product>>() {}.type
-            return gson.fromJson(json, type) ?: ArrayList()
+            val type = object : TypeToken<MutableList<Product>>() {}.type
+            return gson.fromJson(json, type) ?: mutableListOf()
         }
 
         fun deleteProductById(context: Context, productId: Number): Boolean {
@@ -47,8 +47,8 @@ class Utils {
             val editor = sharedPreferences.edit()
             val gson = Gson()
             val json = sharedPreferences.getString("products", null)
-            val productType = object : TypeToken<ArrayList<Product>>() {}.type
-            val currentProducts: ArrayList<Product> = gson.fromJson(json, productType)
+            val productType = object : TypeToken<MutableList<Product>>() {}.type
+            val currentProducts: MutableList<Product> = gson.fromJson(json, productType)
 
             val iterator = currentProducts.iterator()
             while (iterator.hasNext()) {

@@ -1,6 +1,6 @@
 package com.example.imdmarket
 
-class Product(
+data class Product(
     var name: String,
     var id: Number,
     var description: String,

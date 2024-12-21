@@ -47,8 +47,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 else -> {
                     val currentProducts = Utils.getProducts(this)
-
-                    if (currentProducts.any { it.id == productCode }) {
+                    if (currentProducts.any { it.id.toInt() == productCode.toInt() }) {
                         Toast.makeText(this, "A product with this ID already exists. Please use a different ID.", Toast.LENGTH_LONG).show()
                         return@setOnClickListener
                     }
@@ -63,7 +62,7 @@ class RegisterActivity : AppCompatActivity() {
                     currentProducts.add(product)
 
                     // Save updated product list back to storage
-                    Utils.saveProductsArrayList(this, ArrayList(currentProducts)) // Convert back to ArrayList if necessary
+                    Utils.saveProductsMutableList(this, currentProducts)
 
                     Toast.makeText(this, "Product saved successfully!", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MenuActivity::class.java))

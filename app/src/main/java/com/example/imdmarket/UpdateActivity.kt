@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarket.databinding.ActivityUpdateBinding
+import com.example.imdmarket.sharedPreferencesUtils.Utils
 
 class UpdateActivity : AppCompatActivity(){
     private lateinit var binding: ActivityUpdateBinding
@@ -30,10 +31,38 @@ class UpdateActivity : AppCompatActivity(){
                 Toast.makeText(this, "Fill at least one of the fields to updated a product", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            Toast.makeText(this, "Product updated with with success", Toast.LENGTH_SHORT).show()
+            val currentProducts = Utils.getProducts(this)
+
+            val existingProduct = currentProducts.find { it.id.toInt() == productCode.text.toString().toInt() }
+
+            if (!currentProducts.any { it.id.toInt() == productCode.text.toString().toInt() }) {
+                Toast.makeText(this, "A product with this ID  doesn't exist. Please use a different ID.", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            if (existingProduct == null) {
+                Toast.makeText(this, "A product with this ID doesn't exist. Please use a different ID.", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            productStock.text.toString().toIntOrNull()?.let {
+                existingProduct.stock = it
+            }
+            if (productName.text.isNotEmpty()) {
+                existingProduct.name = productName.text.toString()
+            }
+            if (productDescription.text.isNotEmpty()) {
+                existingProduct.description = productDescription.text.toString()
+            }
+
+            // Salvar a lista atualizada de volta no SharedPreferences
+            Utils.saveProductsMutableList(this, currentProducts)
+
+            Toast.makeText(this, "Product updated successfully", Toast.LENGTH_SHORT).show()
+
+            // Navegar de volta para a MenuActivity
             startActivity(Intent(this, MenuActivity::class.java))
             finish()
-            return@setOnClickListener
         }
 
         clearBtn.setOnClickListener {
